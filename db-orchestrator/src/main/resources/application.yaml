@@ -1,0 +1,13 @@
+server:
+  port: 8181
+
+logging:
+  level:
+    org:
+      springframework:
+        web: debug
+
+datasource:
+  url: jdbc:mysql://localhost:3306/thesisDB
+  username: supadmin
+  password: root
