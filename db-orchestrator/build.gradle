@@ -24,6 +24,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     compile("mysql:mysql-connector-java:8.0.15")
+    compile("org.jooq:jooq:3.11.12")
+    compile("org.jooq:jooq-meta:3.11.12")
 
     compile("com.fasterxml.jackson.core:jackson-databind:2.9.7")
 }
