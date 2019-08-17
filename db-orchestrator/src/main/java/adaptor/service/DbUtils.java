@@ -1,6 +1,8 @@
 package adaptor.service;
 
-import adaptor.utils.ColumnType;
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,31 +18,23 @@ public class DbUtils {
     private String username;
     @Value("${datasource.password}")
     private String password;
-    private Connection connection;
 
-    public Connection open() {
+    private Connection connection = null;
+
+    public DSLContext dslContext() {
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return connection;
+        return DSL.using(connection, SQLDialect.MYSQL_8_0);
     }
 
-    public String generateInsertColumnQuery(String tableName, String columnName, ColumnType type) {
-        return "ALTER TABLE " + tableName + "\n" +
-                "ADD COLUMN " + columnName + type.getSql();
-    }
-
-    public void close() {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public void closeJdbcResource() {
+        if (connection != null) try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-
-
 }

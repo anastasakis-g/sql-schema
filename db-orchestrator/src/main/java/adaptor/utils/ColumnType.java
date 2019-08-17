@@ -1,19 +1,22 @@
 package adaptor.utils;
 
+import org.jooq.DataType;
+import org.jooq.impl.SQLDataType;
+
 public enum ColumnType {
-    STRING(" VARCHAR(255)"),
-    INTEGER(" INT NOT NULL"),
-    BOOLEAN(" TINYINT(1) DEFAULT false"),
-    LONG(" BIGINT(20) NOT NULL"),
-    DOUBLE(" DOUBLE NOT NULL");
+    STRING(SQLDataType.VARCHAR.length(255).nullable(true)),
+    INTEGER(SQLDataType.INTEGER.length(11).nullable(false)),
+    BOOLEAN(SQLDataType.BOOLEAN.defaultValue(false).nullable(false)),
+    LONG(SQLDataType.BIGINT.length(20).nullable(false)),
+    DOUBLE(SQLDataType.DOUBLE.nullable(false));
 
-    private String sql;
+    private DataType dataType;
 
-    ColumnType(String sql) {
-        this.sql = sql;
+    ColumnType(DataType dataType) {
+        this.dataType = dataType;
     }
 
-    public String getSql() {
-        return this.sql;
+    public DataType getDataType() {
+        return this.dataType;
     }
 }
