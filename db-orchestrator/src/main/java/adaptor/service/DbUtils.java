@@ -27,7 +27,7 @@ public class DbUtils {
         return connection;
     }
 
-    public String getInsertColumnQuery(String tableName, String columnName, ColumnType type) {
+    public String generateInsertColumnQuery(String tableName, String columnName, ColumnType type) {
         return "ALTER TABLE " + tableName + "\n" +
                 "ADD COLUMN " + columnName + type.getSql();
     }

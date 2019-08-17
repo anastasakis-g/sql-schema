@@ -1,11 +1,10 @@
 package adaptor.utils;
 
 public enum ColumnType {
-    PRIMARY_KEY(" BIGINT(20) NOT NULL AUTO_INCREMENT"),
     STRING(" VARCHAR(255)"),
     INTEGER(" INT NOT NULL"),
     BOOLEAN(" TINYINT(1) DEFAULT false"),
-    LONG(" BIGINT NOT NULL"),
+    LONG(" BIGINT(20) NOT NULL"),
     DOUBLE(" DOUBLE NOT NULL");
 
     private String sql;
