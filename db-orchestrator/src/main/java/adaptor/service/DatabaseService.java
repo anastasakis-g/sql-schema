@@ -7,4 +7,6 @@ public interface DatabaseService {
     ResponseEntity<?> createTable(TableDto table);
 
     ResponseEntity<?> getInfo(String name);
+
+    ResponseEntity dropTable(String name);
 }

@@ -1,4 +1,4 @@
-package adaptor.utils;
+package adaptor.models;
 
 import org.jooq.DataType;
 import org.jooq.impl.SQLDataType;

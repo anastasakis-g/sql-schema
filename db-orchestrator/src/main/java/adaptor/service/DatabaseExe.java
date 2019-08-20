@@ -2,7 +2,7 @@ package adaptor.service;
 
 import adaptor.models.Column;
 import adaptor.models.TableDto;
-import adaptor.utils.ColumnType;
+import adaptor.models.ColumnType;
 import org.jooq.DSLContext;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -82,10 +82,20 @@ public class DatabaseExe implements DatabaseService {
 
                 tableDto.setColumn(new Column(columnName, ColumnType.valueOf(columnType)));
             });
+            dbUtils.closeJdbcResource();
             return new ResponseEntity<>(tableDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Override
+    public ResponseEntity dropTable(String name) {
+
+        if (dbUtils.requestedTaleExists(name)) {
+            dbUtils.dslContext().dropTable(name).execute();
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } else return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
     }
 
 }

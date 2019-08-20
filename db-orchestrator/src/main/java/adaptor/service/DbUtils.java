@@ -2,6 +2,7 @@ package adaptor.service;
 
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
+import org.jooq.Table;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DbUtils {
@@ -28,6 +31,13 @@ public class DbUtils {
             e.printStackTrace();
         }
         return DSL.using(connection, SQLDialect.MYSQL_8_0);
+    }
+
+    public boolean requestedTaleExists(String name) {
+        List<Table> tables = dslContext()
+                .meta().getTables().stream()
+                .filter(table -> table.getName().equals(name)).collect(Collectors.toList());
+        return tables.size() == 1;
     }
 
     public void closeJdbcResource() {

@@ -11,20 +11,24 @@ import javax.validation.Valid;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping("/api/v1.0")
+@RequestMapping("/api/v1.0/schema/tables")
 public class Controller {
 
     @Autowired
     private DatabaseService service;
 
-    @PostMapping(path = "/schema/tables", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity createTable(@RequestBody @Valid TableDto table) {
         return service.createTable(table);
     }
 
-    @GetMapping(path = "/schema/tables/{name}")
+    @GetMapping(path = "/{name}")
     public ResponseEntity describe(@PathVariable String name) {
        return service.getInfo(name);
     }
 
+    @DeleteMapping(path = "/{name}")
+    public ResponseEntity dropTable(@PathVariable String name) {
+        return service.dropTable(name);
+    }
 }
