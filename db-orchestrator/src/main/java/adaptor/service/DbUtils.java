@@ -24,6 +24,8 @@ public class DbUtils {
 
     private Connection connection = null;
 
+    private Table<?> table;
+
     public DSLContext dslContext() {
         try {
             connection = DriverManager.getConnection(url, username, password);
@@ -37,7 +39,14 @@ public class DbUtils {
         List<Table> tables = dslContext()
                 .meta().getTables().stream()
                 .filter(table -> table.getName().equals(name)).collect(Collectors.toList());
-        return tables.size() == 1;
+        if (tables.size() == 1) {
+            table = tables.get(0);
+            return true;
+        } else return false;
+    }
+
+    public Table getTable() {
+        return this.table;
     }
 
     public void closeJdbcResource() {

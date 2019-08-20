@@ -59,12 +59,8 @@ public class DatabaseExe implements DatabaseService {
     @Override
     public ResponseEntity<?> getInfo(String name) {
 
-        List<Table> tables = dbUtils.dslContext()
-                .meta().getTables().stream()
-                .filter(table -> table.getName().equals(name)).collect(Collectors.toList());
-
-        if (tables.size() == 1) {
-            Table<?> table = tables.get(0);
+        if (dbUtils.requestedTaleExists(name)) {
+            Table<?> table = dbUtils.getTable();
 
             TableDto tableDto = new TableDto();
             tableDto.setName(table.getName());
@@ -84,9 +80,8 @@ public class DatabaseExe implements DatabaseService {
             });
             dbUtils.closeJdbcResource();
             return new ResponseEntity<>(tableDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
-        }
+
+        } else return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -94,7 +89,9 @@ public class DatabaseExe implements DatabaseService {
 
         if (dbUtils.requestedTaleExists(name)) {
             dbUtils.dslContext().dropTable(name).execute();
+            dbUtils.closeJdbcResource();
             return new ResponseEntity(HttpStatus.NO_CONTENT);
+
         } else return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
     }
 
