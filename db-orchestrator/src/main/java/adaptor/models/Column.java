@@ -25,6 +25,11 @@ public class Column {
     @JsonProperty("primaryKey")
     private boolean primaryKey = false;
 
+    public Column(String name, ColumnType type) {
+        this.name = name;
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,7 +50,8 @@ public class Column {
         return primaryKey;
     }
 
-    public void setPrimaryKey(boolean primaryKey) {
+    public Column setPrimaryKey(boolean primaryKey) {
         this.primaryKey = primaryKey;
+        return this;
     }
 }

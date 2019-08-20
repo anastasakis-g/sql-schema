@@ -4,19 +4,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.validation.constraints.NotNull;
+import java.util.LinkedList;
 import java.util.List;
 
 @JsonPropertyOrder({
         "name",
         "columns"
 })
-public class Table {
+public class TableDto {
     @NotNull
     @JsonProperty("name")
     private String name;
 
     @JsonProperty("columns")
     private List<Column> columns;
+
+    public TableDto() {
+        this.columns = new LinkedList<>();
+    }
 
     public String getName() {
         return name;
@@ -32,5 +37,9 @@ public class Table {
 
     public void setColumns(List<Column> columns) {
         this.columns = columns;
+    }
+
+    public void setColumn(Column column) {
+        this.columns.add(column);
     }
 }

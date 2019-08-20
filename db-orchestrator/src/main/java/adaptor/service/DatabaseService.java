@@ -1,10 +1,10 @@
 package adaptor.service;
 
-import adaptor.models.Table;
+import adaptor.models.TableDto;
 import org.springframework.http.ResponseEntity;
 
 public interface DatabaseService {
-    ResponseEntity<?> createTable(Table table);
+    ResponseEntity<?> createTable(TableDto table);
 
     ResponseEntity<?> getInfo(String name);
 }
