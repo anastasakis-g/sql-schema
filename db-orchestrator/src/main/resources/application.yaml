@@ -3,9 +3,12 @@ server:
 
 logging:
   level:
+    adaptor:
+      api: DEBUG
     org:
       springframework:
-        web: debug
+        web: DEBUG
+
 
 datasource:
   url: jdbc:mysql://localhost:3306/thesisDB

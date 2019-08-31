@@ -45,7 +45,7 @@ public class DbUtils {
         } else return false;
     }
 
-    public Table getTable() {
+    public Table getRequestedTable() {
         return this.table;
     }
 

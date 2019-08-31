@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class DatabaseExe implements DatabaseService {
-    Logger log = LoggerFactory.getLogger(DatabaseExe.class);
 
     @Autowired
     private DbUtils dbUtils;
@@ -60,7 +59,7 @@ public class DatabaseExe implements DatabaseService {
     public ResponseEntity<?> getInfo(String name) {
 
         if (dbUtils.requestedTaleExists(name)) {
-            Table<?> table = dbUtils.getTable();
+            Table<?> table = dbUtils.getRequestedTable();
 
             TableDto tableDto = new TableDto();
             tableDto.setName(table.getName());

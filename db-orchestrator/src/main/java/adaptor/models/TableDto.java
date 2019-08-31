@@ -6,12 +6,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @JsonPropertyOrder({
         "name",
         "columns"
 })
-public class TableDto {
+public class TableDto extends BaseModel{
     @NotNull
     @JsonProperty("name")
     private String name;
