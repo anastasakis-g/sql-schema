@@ -1,6 +1,6 @@
-package adaptor.service;
+package thesis.service;
 
-import adaptor.models.TableDto;
+import thesis.models.TableDto;
 import org.springframework.http.ResponseEntity;
 
 public interface DatabaseService {

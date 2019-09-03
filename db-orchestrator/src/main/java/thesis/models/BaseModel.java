@@ -1,4 +1,4 @@
-package adaptor.models;
+package thesis.models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -1,4 +1,4 @@
-package adaptor.service;
+package thesis.service;
 
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;

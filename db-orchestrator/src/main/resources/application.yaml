@@ -3,7 +3,7 @@ server:
 
 logging:
   level:
-    adaptor:
+    thesis:
       api: DEBUG
     org:
       springframework:

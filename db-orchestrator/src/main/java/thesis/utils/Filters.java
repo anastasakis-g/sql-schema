@@ -1,4 +1,4 @@
-package adaptor.utils;
+package thesis.utils;
 
 public class Filters {
 

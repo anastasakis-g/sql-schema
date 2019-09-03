@@ -1,4 +1,4 @@
-package adaptor.models;
+package thesis.models;
 
 import org.jooq.DataType;
 import org.jooq.impl.SQLDataType;

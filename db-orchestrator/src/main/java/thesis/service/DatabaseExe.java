@@ -1,14 +1,12 @@
-package adaptor.service;
+package thesis.service;
 
-import adaptor.models.Column;
-import adaptor.models.TableDto;
-import adaptor.models.ColumnType;
+import thesis.models.Column;
+import thesis.models.ColumnType;
+import thesis.models.TableDto;
 import org.jooq.DSLContext;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.impl.DSL;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

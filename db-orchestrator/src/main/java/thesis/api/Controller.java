@@ -1,8 +1,7 @@
-package adaptor.api;
+package thesis.api;
 
-import adaptor.models.TableDto;
-import adaptor.service.DatabaseService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import thesis.models.TableDto;
+import thesis.service.DatabaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
 import java.io.IOException;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -19,6 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/api/v1.0/schema/tables")
 public class Controller {
+
     private Logger log = LoggerFactory.getLogger(Controller.class);
 
     @Autowired
