@@ -1,19 +1,20 @@
 package thesis.service;
 
-import thesis.models.Column;
-import thesis.models.ColumnType;
-import thesis.models.TableDto;
 import org.jooq.DSLContext;
 import org.jooq.Table;
-import org.jooq.TableField;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import thesis.models.Column;
+import thesis.models.ColumnType;
+import thesis.models.TableDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static thesis.utils.Constants.ignoredTables;
 
 @Service
 public class DatabaseExe implements DatabaseService {
@@ -56,25 +57,14 @@ public class DatabaseExe implements DatabaseService {
     @Override
     public ResponseEntity<?> getInfo(String name) {
 
-        if (dbUtils.requestedTaleExists(name)) {
-            Table<?> table = dbUtils.getRequestedTable();
+        List<Table> tables = dbUtils.dslContext()
+                .meta().getTables().stream()
+                .filter(table -> table.getName().equals(name)).collect(Collectors.toList());
 
-            TableDto tableDto = new TableDto();
-            tableDto.setName(table.getName());
+        if (tables.size() == 1) {
+            Table table = tables.get(0);
+            TableDto tableDto = dbUtils.getTableDto(table);
 
-            TableField pkField = table.getPrimaryKey().getFields().get(0);
-            String pkName = pkField.getName();
-            String pkType = pkField.getType().getSimpleName().toUpperCase();
-
-            tableDto.setColumn(new Column(pkName, ColumnType.valueOf(pkType)).setPrimaryKey(true));
-
-
-            table.fieldStream().filter(field -> !field.getName().equals(pkName)).forEach(field -> {
-                String columnName = field.getName();
-                String columnType = field.getType().getSimpleName().toUpperCase();
-
-                tableDto.setColumn(new Column(columnName, ColumnType.valueOf(columnType)));
-            });
             dbUtils.closeJdbcResource();
             return new ResponseEntity<>(tableDto, HttpStatus.OK);
 
@@ -83,13 +73,23 @@ public class DatabaseExe implements DatabaseService {
 
     @Override
     public ResponseEntity dropTable(String name) {
+        List<Table> tables = dbUtils.dslContext()
+                .meta().getTables().stream()
+                .filter(table -> table.getName().equals(name)).collect(Collectors.toList());
 
-        if (dbUtils.requestedTaleExists(name)) {
-            dbUtils.dslContext().dropTable(name).execute();
+        if (tables.size() == 1) {
+            dbUtils.dslContext().dropTable(tables.get(0).getName()).execute();
             dbUtils.closeJdbcResource();
             return new ResponseEntity(HttpStatus.NO_CONTENT);
 
         } else return new ResponseEntity<>("Table " + name + " does not exist.", HttpStatus.NOT_FOUND);
     }
 
+    @Override
+    public List<TableDto> showTables() {
+        return dbUtils.dslContext()
+                .meta().getTables().stream().filter(table -> !ignoredTables().contains(table.getName()))
+                .map(table -> dbUtils.getTableDto(table))
+                .collect(Collectors.toList());
+    }
 }
