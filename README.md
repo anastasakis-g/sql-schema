@@ -1,5 +1,3 @@
-# thesis-defense
-
 # Step 1
 Create a MySQL database.
 Create a user and grant all privileges to him.
