@@ -1,8 +1,6 @@
 # Step 1
-Create a MySQL database.
-Create a user and grant all privileges to this user.
-
-Terminal:
+Create a MySQL database.<br />
+Create a user and grant all privileges to this user using the following temrinal commands:
 - create database db_name;
 - use db_name;
 - create user 'username'@'localhost' identified by 'password';
