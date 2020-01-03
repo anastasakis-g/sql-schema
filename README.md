@@ -1,7 +1,6 @@
 # thesis-defense
-Exposed RESTful API for creating the schema of MySQL database  (create/describe/drop table) using Spring Boot and jOOQ.
 
-Step 1:
+# Step 1
 Create a MySQL database.
 Create a user and grant all privileges to him.
 
@@ -18,10 +17,10 @@ Start Spring Boot Application.
 
 
 
-Step 2:
+# Step 2
 Create your first table using POST http://localhost:8181/api/v1.0/schema/tables
 
-Sample request payload:
+Sample request payload
 {  
    "name":"employee",
    "columns": [  
@@ -65,12 +64,12 @@ Sample request payload:
 
 Expected Response : HTTP/1.1 200 OK 
 
-Step 3:
+# Step 3
 - Open a database GUI tool.
 - Connect to your database and validate the table's structure using <describe emplyee;>. The column lengths and default values of each data type are predetermined in ColumnType.java.
 
 
-Other services:
+# Other Services:
 - Get info (Describe) of the persisted table using GET http://localhost:8181/api/v1.0/schema/tables/{table_name}.
 
 - Drop the table using DELETE http://localhost:8181/api/v1.0/schema/tables/{table_name}.
