@@ -61,7 +61,7 @@ Sample request payload:
 }
 ```
 
-Expected Response : HTTP/1.1 200 OK 
+Expected Status Code: HTTP/1.1 200 OK 
 
 # Step 3
 - Open a database GUI tool (DBeaver, MySQL Workbench, etc).
