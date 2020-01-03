@@ -65,7 +65,8 @@ Expected Response : HTTP/1.1 200 OK
 
 # Step 3
 - Open a database GUI tool.
-- Connect to your database and validate the table's structure using <describe emplyee;>. Column lengths and default values of each data type are predetermined in ColumnType.java.
+- Connect to your database and validate the table's structure using ```> describe employee;```. <br />
+  Column lengths and default values of each data type are predetermined in ```ColumnType.java```.
 
 
 # Other Services:
