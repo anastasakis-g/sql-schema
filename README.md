@@ -73,8 +73,8 @@ Expected Response : HTTP/1.1 200 OK
 
 - Drop the persisted table using DELETE http://localhost:8181/api/v1.0/schema/tables/{table_name}.
 
-- Show all tables using GET http://localhost:8181/api/v1.0/schema/tables.
-  Contains info of the data structure for each created table. 
+- Show all tables using GET http://localhost:8181/api/v1.0/schema/tables.<br />
+  Contains all the data structure info for each created table. 
 
 
 
