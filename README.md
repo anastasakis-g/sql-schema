@@ -10,7 +10,7 @@ Terminal:
 - flush privileges;
 - exit;
 
-Open application.yaml and replace your credentials (datasource).
+Open application.yaml and replace your credentials (datasource).<br />
 Start up the Spring Boot Application.
 
 
