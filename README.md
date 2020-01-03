@@ -11,7 +11,7 @@ Terminal:
 - exit;
 
 Open application.yaml and replace your credentials (datasource).
-Start Spring Boot Application.
+Start up the Spring Boot Application.
 
 
 
