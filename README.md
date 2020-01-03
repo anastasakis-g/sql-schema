@@ -43,7 +43,7 @@ Sample request payload:
          "type":"STRING"
       },
       {  
-         "name":"george1",
+         "name":"serial_number",
          "type":"LONG"
       },
       {  
