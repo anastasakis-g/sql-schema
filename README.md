@@ -9,7 +9,7 @@ mysql> grant all privileges on db_name.* to 'username'@'localhost';
 mysql> flush privileges;
 mysql> exit;
 ```
-Open application.yaml and replace your credentials (datasource).<br />
+Open the ```application.yaml``` file and replace your credentials (datasource).<br />
 Start up the Spring Boot Application.
 
 
@@ -65,7 +65,7 @@ Expected Response : HTTP/1.1 200 OK
 
 # Step 3
 - Open a database GUI tool.
-- Connect to your database and validate the table's structure using ```> describe employee;```. <br />
+- Connect to your database and validate the table's structure by typing ```describe employee;``` in the SQL script. <br />
   Column lengths and default values of each data type are predetermined in ```ColumnType.java```.
 
 
