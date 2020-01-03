@@ -72,7 +72,7 @@ Expected Response : HTTP/1.1 200 OK
 # Other Services:
 - Get info (Describe) of the persisted table using GET http://localhost:8181/api/v1.0/schema/tables/{table_name}.
 
-- Drop the table using DELETE http://localhost:8181/api/v1.0/schema/tables/{table_name}.
+- Drop the persisted table using DELETE http://localhost:8181/api/v1.0/schema/tables/{table_name}.
 
 - Show all tables using GET http://localhost:8181/api/v1.0/schema/tables.
   Contains info of the data structure for each created table. 
