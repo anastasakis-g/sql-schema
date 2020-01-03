@@ -1,6 +1,6 @@
 # Step 1
 Create a MySQL database.<br />
-Create a user and grant all privileges to this user using the following temrinal commands:
+Create a user and grant all privileges to this user using the following terminal commands:
 ```
 mysql> create database db_name;
 mysql> use db_name;
@@ -64,7 +64,7 @@ Sample request payload:
 Expected Response : HTTP/1.1 200 OK 
 
 # Step 3
-- Open a database GUI tool.
+- Open a database GUI tool (DBeaver, MySQL Workbench, etc).
 - Connect to your database and validate the table's structure by typing ```describe employee;``` in the SQL script. <br />
   Column lengths and default values of each data type are predetermined in ```ColumnType.java```.
 
