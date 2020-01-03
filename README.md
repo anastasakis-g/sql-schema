@@ -1,13 +1,14 @@
 # Step 1
 Create a MySQL database.<br />
 Create a user and grant all privileges to this user using the following temrinal commands:
-- create database db_name;
-- use db_name;
-- create user 'username'@'localhost' identified by 'password';
-- grant all privileges on db_name.* to 'username'@'localhost';
-- flush privileges;
-- exit;
-
+```
+mysql> create database db_name;
+mysql> use db_name;
+mysql> create user 'username'@'localhost' identified by 'password';
+mysql> grant all privileges on db_name.* to 'username'@'localhost';
+mysql> flush privileges;
+mysql> exit;
+```
 Open application.yaml and replace your credentials (datasource).<br />
 Start up the Spring Boot Application.
 
