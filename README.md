@@ -20,11 +20,12 @@ Start Spring Boot Application.
 # Step 2
 Create your first table using POST http://localhost:8181/api/v1.0/schema/tables
 
-Sample request payload
+Sample request payload:
+```json
 {  
    "name":"employee",
-   "columns": [  
-      {  
+   "columns": [
+      {
          "name":"employee_id",
          "type":"LONG",
          "primaryKey": true
@@ -61,12 +62,13 @@ Sample request payload
       }
    ]
 }
+```
 
 Expected Response : HTTP/1.1 200 OK 
 
 # Step 3
 - Open a database GUI tool.
-- Connect to your database and validate the table's structure using <describe emplyee;>. The column lengths and default values of each data type are predetermined in ColumnType.java.
+- Connect to your database and validate the table's structure using <describe emplyee;>. Column lengths and default values of each data type are predetermined in ColumnType.java.
 
 
 # Other Services:
