@@ -19,45 +19,43 @@ Create your first table using POST http://localhost:8181/api/v1.0/schema/tables
 
 Sample request payload:
 ```json
-{  
-   "name":"employee",
-   "columns": [
-      {
-         "name":"employee_id",
-         "type":"LONG",
-         "primaryKey": true
-        
-      },
-      {  
-         "name":"full_name",
-         "type":"STRING"
-          
-      },
-      {  
-         "name":"job_title",
-         "type":"STRING"
-      },
-      {  
-         "name":"username",
-         "type":"STRING"
-      },
-      {  
-         "name":"serial_number",
-         "type":"LONG"
-      },
-      {  
-         "name":"age",
-         "type":"INTEGER"
-      },
-       {  
-         "name":"salary",
-         "type":"DOUBLE"
-      },
-      {
-      	 "name":"is_higly_skilled",
-         "type":"BOOLEAN"
-      }
-   ]
+{
+    "name": "employee",
+    "columns": [
+        {
+            "name": "employee_id",
+            "type": "LONG",
+            "primaryKey": true
+        },
+        {
+            "name": "full_name",
+            "type": "STRING"
+        },
+        {
+            "name": "job_title",
+            "type": "STRING"
+        },
+        {
+            "name": "username",
+            "type": "STRING"
+        },
+        {
+            "name": "serial_number",
+            "type": "LONG"
+        },
+        {
+            "name": "age",
+            "type": "INTEGER"
+        },
+        {
+            "name": "salary",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "is_higly_skilled",
+            "type": "BOOLEAN"
+        }
+    ]
 }
 ```
 
