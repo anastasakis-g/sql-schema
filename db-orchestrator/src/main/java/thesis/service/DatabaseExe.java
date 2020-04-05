@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
 import thesis.models.Column;
 import thesis.models.ColumnType;
 import thesis.models.TableDto;
+import thesis.utils.Constants;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static thesis.utils.Constants.ignoredTables;
 
 @Service
 public class DatabaseExe implements DatabaseService {
@@ -88,7 +87,7 @@ public class DatabaseExe implements DatabaseService {
     @Override
     public List<TableDto> showTables() {
         return dbUtils.dslContext()
-                .meta().getTables().stream().filter(table -> !ignoredTables().contains(table.getName()))
+                .meta().getTables().stream().filter(table -> !Constants.ignoredTables.contains(table.getName()))
                 .map(table -> dbUtils.getTableDto(table))
                 .collect(Collectors.toList());
     }
